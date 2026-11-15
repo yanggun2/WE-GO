@@ -1,0 +1,25 @@
+@ 국내 지도는 OpenStreetMap 타일 API 사용
+- url로 실시간으로 지도 타일 이미지를 받아오고 react-leaflet(지도 라이브러리인 Leaflet을 React에서 쉽게 쓸 수 있게 도와주는 도구)의 TileLayer 컴포넌트(api에서 가져와 화면에 깔아주는 역할)가 이 타일을 받아서 지도 배경으로 렌더링(코드로 만든 내용이 실제로 화면에 보이는 것).
+그 다음 깃허브에서 시/도 경계선 데이터가 담긴 GeoJSON 가져와서 react-leaflet의 GeoJSON 컴포넌트(경계선/지형/지리정보 데이터를 지도 위에 그려주는 역할)에 넘겨서 지도 위에 폴리곤으로 입힘
+
+@ 해외 지도는 지도 API를 사용하지 않음
+- react-simple-maps(React에서 벡터 기반 지도를 쉽게 그릴 수 있게 도와주는 라이브러리)를 사용해 구현됨. 지도 배경은 실시간으로 불러오는 게 아니라, 미리 정의된 정적 TopoJSON 데이터(features.json)를 기반으로 화면에 SVG로 렌더링(코드로 만든 내용을 실제 화면에 그림). 이후 각 대륙은 GeoJSON 대신, 직접 정의한 대륙 좌표 영역을 통해 클릭 가능한 사각형을 화면에 오버레이하고, 클릭 시 대륙명을 상태에 저장함.
+
+@ 테마모드(다크/라이트) 전환
+=> ThemeContext.js → useTheme → Setting.js → <body className> → CSS 적용
+1. ThemeContext에서 전역으로 darkMode 상태와 toggleDarkMode() 함수를 관리
+ =>앱 전체에서 공통으로 사용하는 전역값이고, 이를 쉽게 가져오기 위해 useTheme()라는 커스텀 훅으로 감싸서 사용
+2. useTheme()를 통해 현재 테마 상태(darkMode)와 토글 함수(toggleDarkMode)를 가져옴
+3. 사용자가 클릭 시 onChange={toggleDarkMode}를 통해 테마 상태가 반전됨 (true ↔ false)
+4. toggleDarkMode() 내부에서는 darkMode 값을 반대로 바꾸는 동시에,
+document.body.className = darkMode ? 'dark' : 'light' 형태로
+HTML의 <body> 태그에 light 또는 dark 클래스를 동적으로 설정함.
+5. 이후 CSS에서는 이 클래스를 기준으로 페이지의 스타일을 변경
+
+@ Toast UI Editor
+=> 글을 쓰고, 이미지 첨부하고, 스타일을 적용하는 데에 매우 직관적인 웹 기반 오픈소스 에디터
+=> 위고는 사용자가 직접 사용해야하는 게시글 본문에 이미지와 텍스트가 섞인 복잡한 구조가 필요.
+=> 이를 쉽게 구현할 수 있도록 직관적인 UI, 이미지 업로드 기능, 마크다운 지원을 모두 제공해서 선택
+=> 마크다운 문법(코드처럼 쓰면 웹페이지에 예쁘게 변환되는 문법)을 사용하지 못하는 사용자도 쉽게 작성 가능 (WYSIWYG 지원)
+=> 사용자가 에디터에 이미지를 끌어다 놓거나 붙여넣으면,
+→ addImageBlobHook이 호출돼서 이미지가 서버로 전송됨. 이후 이미지의 저장된 주소(url)을 받아서 에디터에 표시하게 되는 구조

@@ -1,0 +1,86 @@
+.detail-container {
+    padding: 80px 40px;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  /* 테마별 스타일 */
+  .detail-container.dark {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .detail-container.light {
+    background-color: #f9f9f9;
+    color: #111111;
+  }
+  
+  .region-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  
+  .filter-buttons {
+    margin-bottom: 24px;
+  }
+  
+  .filter-btn {
+    margin-right: 12px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #38bdf8;
+    color: #fff;
+    transition: background 0.2s;
+  }
+  
+  .filter-btn:hover {
+    background-color: #0ea5e9;
+  }
+  
+  .post-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .post-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    border-radius: 16px;
+    width: calc(33.3% - 20px);
+    min-width: 280px;
+    backdrop-filter: blur(6px);
+    transition: background 0.3s;
+  }
+  
+  .detail-container.light .post-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+  }
+  
+  .post-category {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  
+  .post-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .post-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .filter-btn.active {
+    background-color: #007bff;
+    color: white;
+  }
+  

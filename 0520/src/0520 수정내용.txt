@@ -1,0 +1,29 @@
+@@ 0520 내용
+
+users.js (백엔드) 생성
+
+관리자 페이지 생성
+- AdminHome.js (관리자 메인)
+- AdminPage.js (게시글관리)
+- AdminUsers.js (회원관리)
+
+posts.js
+- 게시글 저장 라우터 부분 수정
+- 게시글 삭제 라우터 추가
+
+index.js
+- 회원관리 라우터 추가
+- 관리자 컬럼 관련 추가
+
+PostForm,js
+- user_id 추가
+
+NavBar.js
+- 마이페이지/관리자 이동 경로 부분 수정
+
+테이블수정내용
+- user 테이블에 is_admin 추가
+ => ALTER TABLE user ADD COLUMN is_admin BOOLEAN DEFAULT FALSE;
+- 최초관리자는 이메일이 'admin@g.shingu.ac.kr'
+ => UPDATE user SET is_admin = 1 WHERE email = 'admin@g.shingu.ac.kr';
+
