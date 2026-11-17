@@ -1,6 +1,6 @@
 # WE-GO · 위고
 
-**지도에서 여행지를 탐색하고 여행 정보를 공유하는 여행 웹 프로젝트**입니다. 3학년 1학기 프로젝트구현 수업에서 MZ세대와 외국인 관광객을 위한 맞춤형 여행 서비스를 목표로 개발했습니다.
+**지도에서 여행지를 탐색하고 여행 정보를 공유하는 여행 웹 프로젝트**입니다. MZ세대와 외국인 관광객을 위한 맞춤형 여행 서비스를 목표로 개발했습니다.
 
 기존 프로젝트 소개와 이 저장소에 포함된 날짜별 소스 코드를 함께 정리했습니다.
 
@@ -13,8 +13,6 @@
 - 다크·라이트 테마 전환
 - OpenRouter 연동 여행 추천 질문 API(`/ask`)
 - 행사 달력, 소개·FAQ 및 문의 화면
-
-기존 README의 ‘선호·검색 이력 기반 추천’, 리뷰, 공지 관리와 5월 27일 이후 상세 에디터·통계 기능은 기획·개발 기록입니다. 이 저장소에서 확인한 최신 날짜 폴더는 `0520/`이며, 이후 최종 통합본 전체가 포함되었다고 보장하지 않습니다. 예를 들어 `0520` 게시글 라우터는 작성·목록·삭제를 제공하며 별도 리뷰 API는 확인되지 않습니다.
 
 ## 기술 스택
 
@@ -45,7 +43,7 @@ wego 기록.txt          # 개발 기록
 *.hwp / *.pptx         # 계획서 및 발표 자료
 ```
 
-날짜별 폴더와 발표 자료는 원본 배치를 유지했습니다. 재설치 가능한 `node_modules/`와 실제 `.env`는 제외했습니다.
+재설치 가능한 `node_modules/`와 실제 `.env`는 제외했습니다.
 
 ## 실행 준비
 
@@ -66,12 +64,5 @@ DB 전체 초기화 SQL은 포함되어 있지 않습니다. 코드가 참조하
 
 ### 프론트엔드
 
-`0520/src`는 React 소스 스냅샷으로 **프론트엔드 루트 `package.json`과 `public/index.html`이 포함되어 있지 않습니다.** 따라서 이 폴더에서 바로 `npm start`를 실행할 수 없습니다. 별도 React 실행 프로젝트를 준비하고 소스·자산을 옮긴 뒤 import에 맞춰 의존성을 구성해야 합니다.
+사용 패키지에는 `react-router-dom`, `axios`, `bootstrap`, `react-bootstrap`, `react-bootstrap-icons`, `react-icons`, `leaflet`, `react-leaflet`, `framer-motion`, `react-multi-carousel`, `react-on-screen`, `react-router-hash-link`, `react-mailchimp-subscribe` 등이 있습니다. 호환 버전 선정과 API 주소 확인
 
-사용 패키지에는 `react-router-dom`, `axios`, `bootstrap`, `react-bootstrap`, `react-bootstrap-icons`, `react-icons`, `leaflet`, `react-leaflet`, `framer-motion`, `react-multi-carousel`, `react-on-screen`, `react-router-hash-link`, `react-mailchimp-subscribe` 등이 있습니다. 호환 버전 선정과 API 주소 확인이 필요합니다.
-
-현재 저장소는 개발 자료와 소스를 보존한 분리본이며, 실행 환경 복원이나 배포 완료를 의미하지 않습니다.
-
-## 출처 및 개발 기록
-
-[ProjectTeam](https://github.com/yanggun2/ProjectTeam)의 `WE-GO` 폴더와 루트 README의 위고 설명을 바탕으로 분리했습니다. 기존 기록에는 5월 지도·게시글·관리자 기능 개발과 6월 17일 최종 통합 완료가 기재되어 있습니다. 원본 저장소는 유지합니다.
